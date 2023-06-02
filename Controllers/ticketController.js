@@ -7,7 +7,7 @@ exports.createTicket = async (req,res)=>{
 
     const ticketObj={
         title:req.body.title,
-        ticketPriority:req.body.ticketPriority,
+        ticketPriority:req.body.priority,
         description:req.body.description,
         status:req.body.status,
         requestor:req.userId

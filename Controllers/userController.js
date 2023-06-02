@@ -30,6 +30,7 @@ exports.getAllUsers = async (req,res) =>{
 }
 
 
+
 exports.getUserById = async (req,res) =>{
     try{
           const id = req.params.id;
@@ -62,9 +63,18 @@ exports.updateUser = async (req,res)=>{
     else if(req.body.status === userStatus.rejected ){
         savedUser.userStatus = userStatus.rejected;
     }
-
-
     const updatedUser = await savedUser.save();
 
     return res.status(200).send(updatedUser);
+}
+
+exports.deleteUser =async(req,res)=>{
+    try {
+        const userId = req.params.userId;
+        await User.deleteOne({_id:id});
+        res.sendStatus(200).send('Deleted sucessfully');
+      } catch (error) {
+        console.error(error);
+        res.sendStatus(500).send({ message: "Internal server error" });
+      }
 }
