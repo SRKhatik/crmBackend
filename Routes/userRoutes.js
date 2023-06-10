@@ -1,10 +1,4 @@
-const {
-  createUser,
-  getAllUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
-} = require("../Controllers/userController");
+const {createUser,getAllUsers,getUserById,updateUser,deleteUser} = require("../Controllers/userController");
 const {
   verifyToken,
   isAdmin,
@@ -16,5 +10,5 @@ module.exports = function (app) {
   app.get("/crm/api/v1/users", [verifyToken, isAdmin], getAllUsers);
   app.get("/crm/api/v1/users/:id",[verifyToken, isAdminOrOwnUser],getUserById);
   app.put("/crm/api/v1/users/:id", [verifyToken, isAdmin], updateUser);
-  app.post("/crm/api/vi/users/:id",[(verifyToken, isAdmin)], deleteUser);
+  app.post("/crm/api/v1/deleteUser", deleteUser);
 };
